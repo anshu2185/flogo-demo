@@ -1,0 +1,41 @@
+{
+  "name": "tibco-awsiot",
+  "type": "flogo:activity",
+  "ref": "github.com/anshu2185/flogo-demo/awsiot",
+  "version": "0.0.1",
+  "title": "Publish to AWS IOT",
+  "description": "Simple AWS IoT",
+  "homepage": "https://github.com/anshu2185/flogo-demo/tree/master/awsiot",
+  "input":[
+    {
+      "name": "thingName",
+      "type": "string",
+      "required": true
+    },
+    {
+      "name": "topic",
+      "type": "string",
+      "required": true
+    },
+    {
+      "name": "awsEndpoint",
+      "type": "string",
+      "required": true
+    },
+    {
+      "name": "qos",
+      "type": "integer",
+      "allowed" : ["0", "1", "2"]
+    },
+    {
+      "name": "message",
+      "type": "string"
+    }
+  ],
+  "output": [
+    {
+      "name": "result",
+      "type": "string"
+    }
+  ]
+}
