@@ -1,9 +1,11 @@
 {
     "name": "readfile",
     "type": "flogo:activity",
+    "ref": "github.com/anshu2185/flogo-demo/dirpoll",
     "version": "0.1.0",
     "title": "Image Reader",
     "description": "Reads a image",
+    "homepage": "https://github.com/anshu2185/flogo-demo/edit/master/dirpoll"
     "author": "retgits",
     "inputs": [
         {
