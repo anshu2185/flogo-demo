@@ -9,7 +9,7 @@ This triggers provides your flogo application the ability to poll a bdirectory c
 ## Installation
 
 ```bash
-flogo add activity github.com/anshu2185/Custom_flogo_activity/dirpoll
+flogo add activity github.com/anshu2185/flogo-demo/dirpoll
 ```
 
 ## Schema
