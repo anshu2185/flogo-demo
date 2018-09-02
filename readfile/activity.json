@@ -1,12 +1,12 @@
 {
     "name": "readfile",
     "type": "flogo:activity",
-    "ref": "github.com/anshu2185/flogo-demo/dirpoll",
+    "ref": "github.com/anshu2185/flogo-demo/readfile",
     "version": "0.1.0",
-    "title": "Image Reader",
-    "description": "Reads a image",
-    "homepage": "https://github.com/anshu2185/flogo-demo/edit/master/dirpoll"
+    "title": "Read file",
+    "description": "Reads a file",
     "author": "retgits",
+    "homepage": "https://github.com/anshu2185/flogo-demo/tree/master/readfile",
     "inputs": [
         {
             "name": "filename",
