@@ -57,7 +57,7 @@ fileHandle, err := os.Open(filename)
   }()
 	// Read the file
 	fileBytes, err := ioutil.ReadAll(fileHandle)
-        encodedString := base64.StdEncoding.EncodeToString(fileBytes) 
+	encodedString := base64.StdEncoding.EncodeToString([]byte(fileBytes)) 
 	if err != nil {
 		log.Debugf("Error while reading file: %s\n", err.Error())
 		return false, err
