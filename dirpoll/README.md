@@ -3,7 +3,7 @@
 
 
 # Directory Poller
-This triggers provides your flogo application the ability to poll a bdirectory continuosly and notify whenever anything changes inside that directory.
+This triggers provides your flogo application the ability to poll a directory continuosly and notify whenever anything changes inside that directory.
 
 
 ## Installation
@@ -55,16 +55,16 @@ Configure a task in flow to perform Fast Fourier Transform
   "triggers": [
     {
       "name": "Directory Poller",
-      "ref": "github.com/Ganitagya/Custom_flogo_activity/dirpoll",
+      "ref": "github.com/anshu2185/flogo-demo/dirpoll",
       "description": "Simple Directory Poller",
       "settings": {
-        "dirName": "/Users/Ganitagya/Downloads/files"
+        "dirName": "/Users/anshu/Downloads/files"
       },
       "id": "directory_poller",
       "handlers": [
         {
           "settings": {
-            "dirName": "/Users/Ganitagya/Downloads/files"
+            "dirName": "/Users/anshu/Downloads/files"
           },
         }
       ]
