@@ -1,4 +1,4 @@
-# Read a File
+# Read an Image
 
 Read an Image and convert the image to base 64 encoded string
 
