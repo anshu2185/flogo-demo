@@ -1,15 +1,15 @@
 # Read a File
 
-Read a file and get the content
+Read an Image and convert the image to base 64 encoded string
 
 ## Installation
 
 ```bash
-flogo install github.com/anshu2185/flogo-components/activity/readfile
+flogo install github.com/anshu2185/flogo-demo/readfile
 ```
 Link for flogo web:
 ```
-https://github.com/anshu2185/flogo-components/activity/readfile
+https://github.com/anshu2185/flogo-demo/readfile
 ```
 
 ## Schema
@@ -35,9 +35,9 @@ Inputs and Outputs:
 ## Inputs
 | Input    | Description                                                                 |
 |:---------|:----------------------------------------------------------------------------|
-| filename | The name of the file you want to read (like `data.txt` or `./tmp/data.txt`) |
+| filename | The name of the Image you want to read (like `data.png` or `./tmp/data.png`) |
 
 ## Ouputs
 | Output      | Description             |
 |:------------|:------------------------|
-| result      | The content of the file |
+| result      | The Base64 encoded content of the Image |
