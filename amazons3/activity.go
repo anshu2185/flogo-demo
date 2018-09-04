@@ -2,6 +2,7 @@
 package amazons3
 
 import (
+	"bytes"
 	"fmt"
 	"os"
 	"path/filepath"
