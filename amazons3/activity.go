@@ -5,7 +5,7 @@ import (
 	"fmt"
 	"os"
 	"path/filepath"
-
+        "encoding/base64"
 	"github.com/TIBCOSoftware/flogo-lib/core/activity"
 	"github.com/TIBCOSoftware/flogo-lib/logger"
 	"github.com/aws/aws-sdk-go/aws"
@@ -17,6 +17,7 @@ import (
 
 const (
 	ivAction             = "action"
+	ivEncodedImageData   = "encodedImageData"
 	ivAwsAccessKeyID     = "awsAccessKeyID"
 	ivAwsSecretAccessKey = "awsSecretAccessKey"
 	ivAwsRegion          = "awsRegion"
@@ -50,6 +51,7 @@ func (a *MyActivity) Eval(context activity.Context) (done bool, err error) {
 
 	// Get the action
 	action := context.GetInput(ivAction).(string)
+	encodedImageData := context.GetInput(ivEncodedImageData).(string)
 	awsRegion := context.GetInput(ivAwsRegion).(string)
 	s3BucketName := context.GetInput(ivS3BucketName).(string)
 	// localLocation is a file when uploading a file or a directory when downloading a file
@@ -90,7 +92,7 @@ func (a *MyActivity) Eval(context activity.Context) (done bool, err error) {
 	case "download":
 		s3err = downloadFileFromS3(awsSession, localLocation, s3Location, s3BucketName)
 	case "upload":
-		s3err = uploadFileToS3(awsSession, localLocation, s3Location, s3BucketName)
+		s3err = uploadFileToS3(awsSession, localLocation, s3Location, s3BucketName, encodedImageData)
 	case "delete":
 		s3err = deleteFileFromS3(awsSession, s3Location, s3BucketName)
 	case "copy":
@@ -154,16 +156,17 @@ func deleteFileFromS3(awsSession *session.Session, s3Location string, s3BucketNa
 }
 
 // Function to upload a file from an S3 bucket
-func uploadFileToS3(awsSession *session.Session, localFile string, s3Location string, s3BucketName string) error {
+func uploadFileToS3(awsSession *session.Session, localFile string, s3Location string, s3BucketName string, encodedImageData string) error {
 	// Create an instance of the S3 Manager
 	s3Uploader := s3manager.NewUploader(awsSession)
 
 	// Create a file pointer to the source
-	reader, err := os.Open(localFile)
+	//reader, err := os.Open(localFile)
+	reader, err := base64.StdEncoding.DecodeString(encodedImageData)
 	if err != nil {
 		return err
 	}
-	defer reader.Close()
+	//defer reader.Close()
 
 	// Prepare the upload
 	uploadInput := &s3manager.UploadInput{
