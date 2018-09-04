@@ -6,11 +6,11 @@ Upload or Download files from Amazon Simple Storage Service (S3)
 ## Installation
 
 ```bash
-flogo install github.com/retgits/flogo-components/activity/amazons3
+flogo install github.com/anshu2185/flogo-demo/amazons3
 ```
 Link for flogo web:
 ```
-https://github.com/retgits/flogo-components/activity/amazons3
+https://github.com/anshu2185/flogo-demo/amazons3
 ```
 
 ## Schema
