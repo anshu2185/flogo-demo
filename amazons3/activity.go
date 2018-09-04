@@ -172,7 +172,7 @@ func uploadFileToS3(awsSession *session.Session, localFile string, s3Location st
 	uploadInput := &s3manager.UploadInput{
 		Bucket: aws.String(s3BucketName),
 		Key:    aws.String(s3Location),
-		Body:   reader,
+		Body:   bytes.NewReader(reader),
 	}
 
 	// Upload the file
