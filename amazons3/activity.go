@@ -5,6 +5,8 @@ import (
 	"bytes"
 	"fmt"
 	"os"
+	"strings"
+        "time"
 	"path/filepath"
         "encoding/base64"
 	"github.com/TIBCOSoftware/flogo-lib/core/activity"
@@ -160,7 +162,9 @@ func deleteFileFromS3(awsSession *session.Session, s3Location string, s3BucketNa
 func uploadFileToS3(awsSession *session.Session, localFile string, s3Location string, s3BucketName string, encodedImageData string) error {
 	// Create an instance of the S3 Manager
 	s3Uploader := s3manager.NewUploader(awsSession)
-
+	splitToken := "."
+        s := strings.Split(s3Location, splitToken)
+        t := time.Now()
 	// Create a file pointer to the source
 	//reader, err := os.Open(localFile)
 	reader, err := base64.StdEncoding.DecodeString(encodedImageData)
@@ -172,7 +176,7 @@ func uploadFileToS3(awsSession *session.Session, localFile string, s3Location st
 	// Prepare the upload
 	uploadInput := &s3manager.UploadInput{
 		Bucket: aws.String(s3BucketName),
-		Key:    aws.String(s3Location),
+		Key:    aws.String(s[0]+t.Format("20060102150405")+splitToken+s[1]),
 		Body:   bytes.NewReader(reader),
 	}
 
