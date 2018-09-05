@@ -5,7 +5,7 @@ import (
 	"crypto/x509"
 	"fmt"
 	"io/ioutil"
-
+	"encoding/json"
 	"github.com/TIBCOSoftware/flogo-lib/core/activity"
 	"github.com/TIBCOSoftware/flogo-lib/logger"
 
@@ -107,7 +107,11 @@ func (a *AwsIoT) Eval(context activity.Context) (done bool, err error) {
 
 // Publish publishes a client message
 func Publish(client MQTT.Client, topic string, qos int, input string) error {
-	token := client.Publish(topic, byte(qos), false, input)
+	in := "name"
+	jsonFormat := make(map[string]string)
+	jsonFormat[in] = input
+	data, _ := json.Marshal(jsonFormat)
+	token := client.Publish(topic, byte(qos), false, string(data))
 	if token.Wait() && token.Error() != nil {
 		log.Error(token.Error())
 		return token.Error()
