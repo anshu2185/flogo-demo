@@ -50,11 +50,7 @@ fileHandle, err := os.Open(filename)
   if err != nil {
     log.Debugf("Error opening file.")
   }
-	defer func () {
-    if err := fileHandle.Close(); err != nil {
-      panic(err)
-    }
-  }()
+	defer fileHandle.Close()
 	// Read the file
 	fileBytes, err := ioutil.ReadAll(fileHandle)
 	encodedString := base64.StdEncoding.EncodeToString([]byte(fileBytes)) 
