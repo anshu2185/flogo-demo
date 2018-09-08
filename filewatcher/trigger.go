@@ -1,3 +1,4 @@
+package filewatcher
 import (
 	"context"
 	"fmt"
