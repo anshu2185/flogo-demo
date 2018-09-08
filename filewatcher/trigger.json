@@ -1,0 +1,27 @@
+{
+  "name": "filewatcher",
+  "type": "flogo:trigger",
+  "ref": "github.com/anshu2185/flogo-demo/filewatcher",
+  "version": "0.0.1",
+  "title": "File Watcher",
+  "author": "Anshuman Singh",
+  "description": "filewatcher",
+  "homepage": "https://github.com/anshu2185/flogo-demo/edit/master/filewatcher",
+"settings":[
+],
+  "outputs": [
+    {
+      "name": "filename",
+      "type": "string"
+    }
+  ],
+  "handler": {
+    "settings": [
+      {
+        "name": "dirName",
+        "type": "string",
+        "required" : true
+      }
+    ]
+  }
+}
