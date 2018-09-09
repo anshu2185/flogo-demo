@@ -8,7 +8,7 @@ import (
 	"encoding/json"
 	"github.com/TIBCOSoftware/flogo-lib/core/activity"
 	"github.com/TIBCOSoftware/flogo-lib/logger"
-
+	"time"
 	MQTT "github.com/eclipse/paho.mqtt.golang"
 )
 
@@ -97,6 +97,7 @@ func (a *AwsIoT) Eval(context activity.Context) (done bool, err error) {
 
 	//thingUpdate := fmt.Sprintf("$aws/things/%s/shadow/update", thingName)
 	Publish(client, ivtopic, ivqos, ivpayload)
+	time.Sleep(3 * time.Second)
 	log.Debugf("MQTT Publisher disconnected")
 	context.SetOutput("result", "OK")
 	return true, nil
